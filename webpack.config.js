@@ -36,74 +36,102 @@ module.exports = {
                 ]
             },
 
-            // {
-            //     test: /\.(sa|sc|c)ss$/,
-            //     use: [
-            //     MiniCssExtractPlugin.loader, 
-            //     // 'style-loader',
-            //     'css-loader', 
-            //     'postcss-loader',
-            //     'sass-loader'
-            //     ]
-            // },
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            sourceMap: true,
-                            name: '[name].[ext]',
-                            outputPath: "/assets/css",
-                        },
-                    },
-                    {
-                        loader: "extract-loader",
-                        // options: {
-                        //     publicPath: "../",
-                        // }
-                    },
-                    {
-                        loader: "css-loader",
-                    },
-                    {
-                        loader: "postcss-loader",
-                    },
-                    {
-                        loader: "sass-loader",
-                    },
-
-                ],
+                MiniCssExtractPlugin.loader, 
+                // 'style-loader',
+                'css-loader', 
+                'postcss-loader',
+                'sass-loader'
+                ]
             },
+            // {
+            //     test: /\.(sa|sc|c)ss$/,
+            //     use: [
+            //         {
+            //             loader: "file-loader",
+            //             options: {
+            //                 sourceMap: true,
+            //                 name: '[name].[ext]',
+            //                 outputPath: "/assets/css",
+            //             },
+            //         },
+            //         {
+            //             loader: "extract-loader",
+            //             // options: {
+            //             //     publicPath: "../",
+            //             // }
+            //         },
+            //         {
+            //             loader: "css-loader",
+            //         },
+            //         {
+            //             loader: "postcss-loader",
+            //         },
+            //         {
+            //             loader: "sass-loader",
+            //         },
+
+            //     ],
+            // },
                     
+            // {
+            //     test: /\.(png|svg|jpe?g|gif)$/,
+            //     exclude: /fonts/,
+            //     use: [
+            //         {
+            //             loader: "file-loader", 
+            //             options: {
+            //             name: '[name].[ext]',
+            //             outputPath: "/assets/images",
+            //             }
+            //         }
+            //     ]
+            // },
+
             {
-                test: /\.(png|svg|jpe?g|gif)$/,
+                test: /\.(png|jpg|gif)$/i,
                 exclude: /fonts/,
                 use: [
-                    {
-                        loader: "file-loader", 
-                        options: {
-                        name: '[name].[ext]',
-                        outputPath: "/assets/images",
-                        }
-                    }
-                ]
-            },
+                  {
+                    loader: 'url-loader',
+                    options: {
+                      limit: 8192,
+                      name: '[name].[ext]',
+                      outputPath: "assets/fonts",
+                    },
+                  },
+                ],
+              },
+
+            // {
+            //     test: /\.(svg|eot|woff|woff2|ttf)$/,
+            //     exclude: /images/,
+            //     use: [
+            //         {
+            //             loader: "file-loader", 
+            //             options: {
+            //             name: '[name].[ext]',
+            //             outputPath: "assets/fonts",
+            //             }
+            //         }
+            //     ]
+            // },
 
             {
-                test: /\.(svg|eot|woff|woff2|ttf)$/,
-                exclude: /images/,
-                use: [
-                    {
-                        loader: "file-loader", 
-                        options: {
-                        name: '[name].[ext]',
-                        outputPath: "assets/fonts",
-                        }
+              test: /\.(svg|eot|woff|woff2|ttf)$/,
+              exclude: /images/,
+              use: [
+                  {
+                    loader: 'url-loader', 
+                    options: {
+                      name: '[name].[ext]',
+                      outputPath: "assets/fonts",
                     }
-                ]
+                  }
+              ]
             },
-
         ]
     },
 
